@@ -1,0 +1,119 @@
+---
+import { ArrowRight, Phone } from 'lucide-astro';
+---
+
+<section id="consultation" class="relative overflow-hidden bg-crimson py-24 lg:py-32">
+  <!-- Decorative texture -->
+  <span
+    class="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full border border-white/10"
+    aria-hidden="true"
+  ></span>
+  <span
+    class="pointer-events-none absolute -top-12 -right-12 h-96 w-96 rounded-full border border-white/10"
+    aria-hidden="true"
+  ></span>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-12">
+    <div class="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <p class="reveal mb-4 text-xs font-normal tracking-[0.35em] uppercase text-ivory/70">
+          Free Consultation
+        </p>
+        <h2 class="reveal font-display text-4xl leading-tight font-medium text-ivory sm:text-5xl">
+          Let’s Design Your <em class="italic">Story.</em>
+        </h2>
+        <p class="reveal mt-6 max-w-md leading-relaxed text-ivory/80">
+          Share a few details and our principal designer will call you within one working day to
+          schedule your complimentary site visit anywhere in Kolkata.
+        </p>
+        <a
+          href="tel:+919830000000"
+          class="reveal mt-8 inline-flex items-center gap-3 text-ivory transition hover:text-white"
+        >
+          <span class="flex h-11 w-11 items-center justify-center rounded-full border border-ivory/40">
+            <Phone class="h-4 w-4" />
+          </span>
+          <span>
+            <span class="block text-xs tracking-[0.2em] uppercase text-ivory/60">Or call us directly</span>
+            <span class="font-display text-xl">+91 98300 00000</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Lead capture form -->
+      <form
+        action="/api/lead"
+        method="POST"
+        class="reveal bg-ivory p-8 shadow-2xl sm:p-10"
+        data-netlify="false"
+      >
+        <h3 class="font-display text-2xl font-medium text-charcoal">Book Your Site Visit</h3>
+        <p class="mt-1 text-sm text-stone">No obligation · Response within 24 hours</p>
+
+        <div class="mt-7 space-y-5">
+          <div>
+            <label for="lead-name" class="mb-2 block text-xs tracking-[0.2em] uppercase text-charcoal">
+              Full Name
+            </label>
+            <input
+              type="text"
+              id="lead-name"
+              name="name"
+              required
+              autocomplete="name"
+              placeholder="e.g. Ananya Sharma"
+              class="w-full border border-blush bg-white px-4 py-3 text-charcoal placeholder:text-stone/50 focus:border-crimson focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label for="lead-phone" class="mb-2 block text-xs tracking-[0.2em] uppercase text-charcoal">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="lead-phone"
+              name="phone"
+              required
+              autocomplete="tel"
+              pattern="[0-9+ -]{10,15}"
+              placeholder="+91 98XXX XXXXX"
+              class="w-full border border-blush bg-white px-4 py-3 text-charcoal placeholder:text-stone/50 focus:border-crimson focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label for="lead-type" class="mb-2 block text-xs tracking-[0.2em] uppercase text-charcoal">
+              Project Type
+            </label>
+            <select
+              id="lead-type"
+              name="project_type"
+              required
+              class="w-full border border-blush bg-white px-4 py-3 text-charcoal focus:border-crimson focus:outline-none"
+            >
+              <option value="" disabled selected>Select your project</option>
+              <option value="full-home">Full Home Interior</option>
+              <option value="single-room">Single Room / Renovation</option>
+              <option value="commercial">Commercial Space</option>
+              <option value="styling-only">Styling & Decor Only</option>
+              <option value="other">Something Else</option>
+            </select>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="group mt-8 flex w-full items-center justify-center gap-3 bg-crimson px-6 py-4 text-sm font-normal tracking-[0.15em] uppercase text-white transition hover:bg-crimson-dark"
+        >
+          Request Callback
+          <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </button>
+
+        <p class="mt-4 text-center text-xs text-stone">
+          By submitting, you agree to be contacted about your enquiry. We never share your details.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>

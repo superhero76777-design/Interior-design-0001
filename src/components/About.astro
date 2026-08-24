@@ -1,0 +1,85 @@
+---
+import { ArrowRight, Star } from 'lucide-astro';
+
+const stats = [
+  { value: '17+', label: 'Years of Practice' },
+  { value: '240+', label: 'Projects Delivered' },
+  { value: '98%', label: 'Clients Who Refer Us' },
+];
+---
+
+<section id="about" class="overflow-hidden py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-12">
+    <div class="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
+      <!-- Image collage -->
+      <div class="reveal relative">
+        <img
+          src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=70&w=900&auto=format&fit=crop"
+          alt="Elegant living room designed by Atelier Ananya"
+          class="aspect-[4/5] w-full object-cover"
+          loading="lazy"
+          decoding="async"
+          width="900"
+          height="1125"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=60&w=600&auto=format&fit=crop"
+          alt="Detail of a curated interior vignette"
+          class="absolute -right-4 -bottom-10 hidden w-1/2 border-8 border-ivory object-cover shadow-xl sm:block lg:-right-10"
+          loading="lazy"
+          decoding="async"
+          width="600"
+          height="450"
+        />
+        <span class="absolute -top-6 -left-6 -z-10 h-40 w-40 border border-crimson/30" aria-hidden="true"></span>
+      </div>
+
+      <!-- Copy -->
+      <div>
+        <p class="reveal mb-4 text-xs font-normal tracking-[0.35em] uppercase text-crimson">About Us</p>
+        <h2 class="reveal font-display text-4xl leading-tight font-medium text-charcoal sm:text-5xl">
+          A Kolkata Atelier with a
+          <em class="italic">Heritage Heart</em>
+        </h2>
+        <span class="animate-line-grow mt-6 block h-px w-24 bg-crimson" aria-hidden="true"></span>
+        <p class="reveal mt-8 leading-relaxed text-stone">
+          Founded in 2009 in a restored Ballygunge mansion, Atelier Ananya began with a single
+          conviction — that the homes of Kolkata deserve interiors as storied as the city itself.
+          Our studio pairs old-world craftsmanship with contemporary restraint.
+        </p>
+        <p class="reveal mt-5 leading-relaxed text-stone">
+          Every project starts with listening. We study how you gather, rest, and celebrate — then
+          translate those rituals into spaces of quiet luxury: hand-rubbed teak, terrazzo from
+          Chandannagar mills, and light that moves through your day like a well-rehearsed raga.
+        </p>
+
+        <blockquote class="reveal mt-8 border-l-2 border-crimson pl-6 font-display text-xl italic text-charcoal">
+          “We don’t decorate rooms. We compose the backdrop of your life.”
+          <footer class="mt-3 font-sans text-xs tracking-[0.25em] uppercase not-italic text-stone">
+            Ananya Sen — Founder & Principal Designer
+          </footer>
+        </blockquote>
+
+        <dl class="reveal mt-12 grid grid-cols-3 gap-6 border-t border-blush pt-8">
+          {
+            stats.map(({ value, label }) => (
+              <div>
+                <dt class="sr-only">{label}</dt>
+                <dd class="font-display text-3xl font-medium text-crimson sm:text-4xl">{value}</dd>
+                <dd class="mt-1 text-[11px] leading-snug tracking-[0.15em] uppercase text-stone">{label}</dd>
+              </div>
+            ))
+          }
+        </dl>
+
+        <a
+          href="#consultation"
+          class="reveal group mt-10 inline-flex items-center gap-3 bg-crimson px-8 py-4 text-sm font-normal tracking-[0.15em] uppercase text-white transition hover:bg-crimson-dark"
+        >
+          Start Your Project
+          <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

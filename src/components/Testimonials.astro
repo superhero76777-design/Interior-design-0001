@@ -1,0 +1,61 @@
+---
+import { Star, Quote } from 'lucide-astro';
+
+const testimonials = [
+  {
+    quote:
+      'Ananya understood our 90-year-old heritage flat better than we ever had. The restoration kept every old soul intact while making it unmistakably ours.',
+    name: 'Rukmini & Arjun Chatterjee',
+    location: 'Heritage Flat, Ballygunge',
+    project: 'Full-Home Restoration',
+  },
+  {
+    quote:
+      'Delivered two weeks ahead of schedule, on budget, with a finish quality our contractor friends still talk about. The turnkey process was genuinely effortless.',
+    name: 'Sourav Banerjee',
+    location: 'Penthouse, Salt Lake Sector V',
+    project: 'Turnkey Interior',
+  },
+  {
+    quote:
+      'Our café footfall doubled after the redesign. Guests come in for the coffee but they stay — and photograph — the space.',
+    name: 'Priyanka Roy',
+    location: 'New Town',
+    project: 'Hospitality Design',
+  },
+];
+---
+
+<section id="testimonials" class="bg-linen py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-12">
+    <div class="mb-16 max-w-2xl text-center mx-auto">
+      <p class="reveal mb-4 text-xs font-normal tracking-[0.35em] uppercase text-crimson">Testimonials</p>
+      <h2 class="reveal font-display text-4xl leading-tight font-medium text-charcoal sm:text-5xl">
+        Words from Our <em class="italic">Clients</em>
+      </h2>
+      <span class="animate-line-grow mx-auto mt-6 block h-px w-24 bg-crimson" aria-hidden="true"></span>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-3">
+      {
+        testimonials.map(({ quote, name, location, project }) => (
+          <figure class="reveal flex flex-col border border-blush bg-white p-10 transition-shadow duration-500 hover:shadow-xl">
+            <Quote class="h-8 w-8 rotate-180 text-crimson/30" stroke-width={1.25} aria-hidden="true" />
+            <div class="mt-5 flex gap-1 text-crimson" role="img" aria-label="Rated 5 out of 5 stars">
+              {[...Array(5)].map(() => (
+                <Star class="h-4 w-4 fill-crimson" />
+              ))}
+            </div>
+            <blockquote class="mt-6 flex-1 leading-relaxed text-stone">“{quote}”</blockquote>
+            <figcaption class="mt-8 border-t border-blush pt-6">
+              <p class="font-display text-xl font-medium text-charcoal">{name}</p>
+              <p class="mt-1 text-xs tracking-[0.2em] uppercase text-stone">
+                {location} · {project}
+              </p>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

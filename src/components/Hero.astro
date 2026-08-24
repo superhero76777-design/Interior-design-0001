@@ -1,0 +1,75 @@
+---
+import { ArrowRight, Star } from 'lucide-astro';
+---
+
+<section id="home" class="relative flex min-h-screen items-center overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0">
+    <img
+      src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=70&w=1920&auto=format&fit=crop"
+      srcset="
+        https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=70&w=1280&auto=format&fit=crop 1280w,
+        https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=70&w=1920&auto=format&fit=crop 1920w,
+        https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=70&w=2560&auto=format&fit=crop 2560w
+      "
+      sizes="100vw"
+      alt="Sunlit luxury living room with designer furniture in a Kolkata residence"
+      class="animate-slow-zoom h-full w-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+      width="1920"
+      height="1280"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-ivory via-ivory/85 to-ivory/10"
+      aria-hidden="true"
+    ></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative mx-auto w-full max-w-7xl px-6 pt-32 pb-24 lg:px-12">
+    <p class="reveal mb-6 text-xs font-normal tracking-[0.4em] uppercase text-crimson">
+      Kolkata &nbsp;·&nbsp; Est. 2009
+    </p>
+
+    <h1 class="reveal max-w-3xl font-display text-5xl leading-[1.06] font-medium text-charcoal sm:text-6xl lg:text-7xl">
+      Timeless Interiors,<br />
+      <em class="italic">Crafted for Living.</em>
+    </h1>
+
+    <span class="animate-line-grow mt-8 block h-px w-28 bg-crimson" aria-hidden="true"></span>
+
+    <p class="reveal mt-8 max-w-xl text-lg leading-relaxed text-stone sm:text-xl">
+      Atelier Ananya designs bespoke residential and commercial spaces across Kolkata — where
+      Bengali heritage meets contemporary elegance, delivered turnkey.
+    </p>
+
+    <div class="reveal mt-10 flex flex-wrap items-center gap-4">
+      <a
+        href="#consultation"
+        class="group inline-flex items-center gap-3 bg-crimson px-8 py-4 text-sm font-normal tracking-[0.15em] uppercase text-white shadow-lg transition hover:bg-crimson-dark hover:shadow-xl"
+      >
+        Book a Free Consultation
+        <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
+      </a>
+      <a
+        href="#projects"
+        class="inline-flex items-center border border-charcoal/30 px-8 py-4 text-sm font-normal tracking-[0.15em] uppercase text-charcoal transition hover:border-charcoal hover:bg-charcoal hover:text-ivory"
+      >
+        View Our Work
+      </a>
+    </div>
+
+    <div class="reveal mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 text-stone">
+      <span class="flex items-center gap-2 text-sm tracking-wide">
+        <span class="flex text-crimson" aria-hidden="true">
+          <Star class="h-4 w-4 fill-crimson" /><Star class="h-4 w-4 fill-crimson" /><Star
+            class="h-4 w-4 fill-crimson" /><Star class="h-4 w-4 fill-crimson" /><Star
+            class="h-4 w-4 fill-crimson"
+          /></span>
+        <strong class="font-medium text-charcoal">4.9</strong> · rated by 180+ homeowners
+      </span>
+      <span class="text-sm tracking-wide">Featured in <em class="font-display italic text-charcoal">Architectural Digest India</em></span>
+    </div>
+  </div>
+</section>

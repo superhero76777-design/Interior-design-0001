@@ -1,0 +1,130 @@
+---
+import { MapPin, Phone, Mail, Instagram, Facebook, Youtube } from 'lucide-astro';
+
+const year = new Date().getFullYear();
+
+const navLinks = [
+  { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About Us' },
+  { href: '#services', label: 'Services' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#testimonials', label: 'Testimonials' },
+  { href: '#faq', label: 'FAQ' },
+];
+
+const serviceLinks = [
+  'Residential Interiors',
+  'Commercial Spaces',
+  'Turnkey Execution',
+  'Lighting Design',
+  'Custom Furniture',
+  'Styling & Decor',
+];
+
+const socials = [
+  { icon: Instagram, label: 'Instagram', href: 'https://instagram.com' },
+  { icon: Facebook, label: 'Facebook', href: 'https://facebook.com' },
+  { icon: Youtube, label: 'YouTube', href: 'https://youtube.com' },
+];
+---
+
+<footer class="bg-charcoal text-ivory">
+  <div class="mx-auto max-w-7xl px-6 pt-20 pb-10 lg:px-12">
+    <div class="grid gap-12 lg:grid-cols-12">
+      <!-- Brand -->
+      <div class="lg:col-span-4">
+        <a href="#home" class="flex items-baseline gap-2" aria-label="Atelier Ananya — home">
+          <span class="font-display text-2xl font-semibold tracking-wide">Atelier</span>
+          <span class="font-display text-2xl italic text-[#e0807f]">Ananya</span>
+        </a>
+        <p class="mt-6 max-w-xs text-sm leading-relaxed text-ivory/60">
+          A Kolkata design atelier crafting timeless residential and commercial interiors since
+          2009 — where heritage meets contemporary elegance.
+        </p>
+        <div class="mt-8 flex gap-3">
+          {
+            socials.map(({ icon: Icon, label, href }) => (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-ivory/25 text-ivory/70 transition hover:border-crimson hover:bg-crimson hover:text-white"
+              >
+                <Icon class="h-4 w-4" />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="lg:col-span-2" aria-label="Footer">
+        <h3 class="text-xs font-normal tracking-[0.3em] uppercase text-crimson">Explore</h3>
+        <ul class="mt-6 space-y-3">
+          {
+            navLinks.map(({ href, label }) => (
+              <li>
+                <a href={href} class="text-sm text-ivory/70 transition hover:text-ivory">
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <!-- Services -->
+      <div class="lg:col-span-3">
+        <h3 class="text-xs font-normal tracking-[0.3em] uppercase text-crimson">Services</h3>
+        <ul class="mt-6 space-y-3">
+          {
+            serviceLinks.map((label) => (
+              <li>
+                <a href="#services" class="text-sm text-ivory/70 transition hover:text-ivory">
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <address class="not-italic lg:col-span-3">
+        <h3 class="text-xs font-normal tracking-[0.3em] uppercase text-crimson">Visit the Studio</h3>
+        <ul class="mt-6 space-y-5 text-sm">
+          <li class="flex items-start gap-3 text-ivory/70">
+            <MapPin class="mt-0.5 h-4 w-4 shrink-0 text-crimson" />
+            <span>14B Loudon Street,<br />Kolkata — 700017, West Bengal</span>
+          </li>
+          <li>
+            <a href="tel:+919830000000" class="flex items-center gap-3 text-ivory/70 transition hover:text-ivory">
+              <Phone class="h-4 w-4 shrink-0 text-crimson" />
+              +91 98300 00000
+            </a>
+          </li>
+          <li>
+            <a
+              href="mailto:studio@atelierananya.in"
+              class="flex items-center gap-3 text-ivory/70 transition hover:text-ivory"
+            >
+              <Mail class="h-4 w-4 shrink-0 text-crimson" />
+              studio@atelierananya.in
+            </a>
+          </li>
+        </ul>
+        <p class="mt-6 border-t border-white/10 pt-5 text-xs leading-relaxed text-ivory/50">
+          Mon – Sat · 10:00 AM – 7:00 PM<br />Site visits by appointment
+        </p>
+      </address>
+    </div>
+
+    <div
+      class="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row"
+    >
+      <p class="text-xs text-ivory/50">© {year} Atelier Ananya. All rights reserved.</p>
+      <p class="text-xs tracking-[0.2em] uppercase text-ivory/40">Crafted with care in Kolkata</p>
+    </div>
+  </div>
+</footer>

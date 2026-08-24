@@ -1,0 +1,71 @@
+---
+import { Sofa, Ruler, Lamp, Building2, Paintbrush, Armchair } from 'lucide-astro';
+
+const services = [
+  {
+    icon: Sofa,
+    title: 'Residential Interiors',
+    description:
+      'Full-home design for apartments and villas — from spatial planning to the last cushion, styled around how your family truly lives.',
+  },
+  {
+    icon: Building2,
+    title: 'Commercial Spaces',
+    description:
+      'Offices, boutiques, cafés, and clinics across Salt Lake and New Town — environments that elevate brand and experience alike.',
+  },
+  {
+    icon: Ruler,
+    title: 'Turnkey Execution',
+    description:
+      'A single accountable partner for civil work, joinery, electricals, and styling — delivered on schedule, ready to move in.',
+  },
+  {
+    icon: Lamp,
+    title: 'Lighting Design',
+    description:
+      'Layered lighting schemes that sculpt mood and material — cove, accent, and statement fixtures specified to the lumen.',
+  },
+  {
+    icon: Paintbrush,
+    title: 'Custom Furniture & Joinery',
+    description:
+      'Bespoke pieces crafted in our own workshop — teak four-posters, brass-inlay consoles, upholstery in heritage weaves.',
+  },
+  {
+    icon: Armchair,
+    title: 'Styling & Decor',
+    description:
+      'Art curation, textile layering, Vastu-aligned placement, and finishing touches that make a completed space feel inevitable.',
+  },
+];
+---
+
+<section id="services" class="bg-linen py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-12">
+    <div class="mb-16 max-w-2xl">
+      <p class="reveal mb-4 text-xs font-normal tracking-[0.35em] uppercase text-crimson">Services</p>
+      <h2 class="reveal font-display text-4xl leading-tight font-medium text-charcoal sm:text-5xl">
+        What We <em class="italic">Craft</em> for You
+      </h2>
+      <span class="animate-line-grow mt-6 block h-px w-24 bg-crimson" aria-hidden="true"></span>
+      <p class="reveal mt-6 leading-relaxed text-stone">
+        Six disciplines, one seamless process — every engagement led end-to-end by a dedicated
+        principal designer.
+      </p>
+    </div>
+
+    <div class="grid gap-px overflow-hidden border border-blush bg-blush sm:grid-cols-2 lg:grid-cols-3">
+      {
+        services.map(({ icon: Icon, title, description }) => (
+          <article class="reveal group bg-linen p-10 transition-colors duration-500 hover:bg-white">
+            <Icon class="h-8 w-8 text-crimson transition-transform duration-500 group-hover:-translate-y-1" stroke-width={1.25} />
+            <h3 class="mt-6 font-display text-2xl font-medium text-charcoal">{title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone">{description}</p>
+            <span class="mt-6 block h-px w-10 bg-crimson/40 transition-all duration-500 group-hover:w-20 group-hover:bg-crimson" aria-hidden="true" />
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

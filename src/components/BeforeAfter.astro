@@ -1,0 +1,127 @@
+---
+/**
+ * Interactive before/after comparison slider.
+ * Drag, swipe, or use arrow keys — native <input type="range"> keeps it accessible.
+ *
+ * NOTE: Imagery below is illustrative placeholder photography.
+ * Replace with genuine before/after shots of the same room for launch.
+ */
+import { MoveHorizontal } from 'lucide-astro';
+
+const before = {
+  src: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=65&w=1100&auto=format&fit=crop',
+  alt: 'A plain, sparsely furnished living room before renovation',
+};
+const after = {
+  src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=65&w=1100&auto=format&fit=crop',
+  alt: 'The transformed living room — layered lighting, bespoke joinery, curated textiles',
+};
+---
+
+<section id="transformations" class="bg-charcoal py-24 text-ivory lg:py-32">
+  <div class="mx-auto max-w-5xl px-6 lg:px-12">
+    <div class="mb-14 text-center">
+      <p class="reveal mb-4 text-xs font-normal tracking-[0.35em] uppercase text-[#e0807f]">
+        Before &amp; After
+      </p>
+      <h2 class="reveal font-display text-4xl leading-tight font-medium sm:text-5xl">
+        Witness the <em class="italic">Transformation</em>
+      </h2>
+      <span class="animate-line-grow mx-auto mt-6 block h-px w-24 bg-crimson" aria-hidden="true"></span>
+      <p class="reveal mx-auto mt-6 max-w-xl leading-relaxed text-ivory/70">
+        Every project begins as an ordinary room. Drag the slider to see what our design process
+        makes of it.
+      </p>
+    </div>
+
+    <figure class="reveal ba-frame relative mx-auto aspect-4/3 overflow-hidden rounded-sm shadow-2xl select-none sm:aspect-video">
+      <!-- AFTER (base layer) -->
+      <img
+        src={after.src}
+        alt={after.alt}
+        class="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+        decoding="async"
+        width="1100"
+        height="620"
+        draggable="false"
+      />
+      <!-- BEFORE (clipped layer) -->
+      <img
+        src={before.src}
+        alt={before.alt}
+        class="absolute inset-0 h-full w-full object-cover [clip-path:inset(0_calc(100%_-_var(--pos))_0_0)]"
+        loading="lazy"
+        decoding="async"
+        width="1100"
+        height="620"
+        draggable="false"
+      />
+
+      <!-- Divider + handle -->
+      <span
+        class="pointer-events-none absolute inset-y-0 -translate-x-1/2 bg-ivory/90"
+        style="left: var(--pos)"
+        aria-hidden="true"
+      >
+        <span class="block h-full w-px"></span>
+      </span>
+      <span
+        class="pointer-events-none absolute top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ivory/80 bg-charcoal/60 text-ivory shadow-lg backdrop-blur-sm"
+        style="left: var(--pos)"
+        aria-hidden="true"
+      >
+        <MoveHorizontal class="h-5 w-5" />
+      </span>
+
+      <!-- Labels -->
+      <span
+        class="pointer-events-none absolute top-4 left-4 bg-charcoal/60 px-3 py-1 text-[11px] tracking-[0.25em] uppercase text-ivory backdrop-blur-sm"
+        aria-hidden="true">Before</span
+      >
+      <span
+        class="pointer-events-none absolute top-4 right-4 bg-crimson/90 px-3 py-1 text-[11px] tracking-[0.25em] uppercase text-white backdrop-blur-sm"
+        aria-hidden="true">After</span
+      >
+
+      <!-- Accessible control layered over the frame -->
+      <input
+        id="ba-range"
+        type="range"
+        min="0"
+        max="100"
+        value="50"
+        step="0.5"
+        aria-label="Compare before and after — drag or use arrow keys"
+        class="absolute inset-0 h-full w-full cursor-ew-resize opacity-0"
+      />
+    </figure>
+
+    <figcaption class="reveal mt-6 text-center text-xs tracking-[0.2em] uppercase text-ivory/50">
+      Ballygunge Residence · Living Room · Drag to compare
+    </figcaption>
+  </div>
+</section>
+
+<style>
+  .ba-frame {
+    /* Comparison position; updated live by the range input below. */
+    --pos: 50%;
+  }
+
+  .ba-frame:focus-within {
+    outline: 2px solid var(--color-crimson);
+    outline-offset: 4px;
+  }
+</style>
+
+<script>
+  const frame = document.querySelector<HTMLElement>('.ba-frame');
+  const range = document.querySelector<HTMLInputElement>('#ba-range');
+
+  if (frame && range) {
+    const update = () => frame.style.setProperty('--pos', `${range.value}%`);
+    range.addEventListener('input', update);
+    update();
+  }
+</script>

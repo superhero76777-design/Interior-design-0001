@@ -1,0 +1,104 @@
+---
+import { ArrowUpRight } from 'lucide-astro';
+
+const projects = [
+  {
+    src: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=65&w=800&auto=format&fit=crop',
+    alt: 'Serene neutral living room with arched details in a Ballygunge residence',
+    title: 'Ballygunge Residence',
+    category: 'Full-Home · Residential',
+    tall: true,
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=65&w=800&auto=format&fit=crop',
+    alt: 'Modern kitchen with warm wood cabinetry and marble island',
+    title: 'Salt Lake Penthouse Kitchen',
+    category: 'Kitchen · Turnkey',
+    tall: false,
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=65&w=800&auto=format&fit=crop',
+    alt: 'Bright contemporary bedroom with layered textiles',
+    title: 'Alipore Master Suite',
+    category: 'Bedroom · Styling',
+    tall: true,
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1615873968403-89e068629265?q=65&w=800&auto=format&fit=crop',
+    alt: 'Boutique café interior with statement lighting',
+    title: 'New Town Boutique Café',
+    category: 'Hospitality · Commercial',
+    tall: false,
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1600494603989-9650cf6ddd3d?q=65&w=800&auto=format&fit=crop',
+    alt: 'Elegant dining room with brass pendant light and teak table',
+    title: 'Lake Gardens Dining Hall',
+    category: 'Dining · Custom Joinery',
+    tall: true,
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=65&w=800&auto=format&fit=crop',
+    alt: 'Minimalist home office with warm neutral palette',
+    title: 'Park Street Home Studio',
+    category: 'Workspace · Renovation',
+    tall: false,
+  },
+];
+---
+
+<section id="projects" class="py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-12">
+    <div class="mb-16 flex flex-wrap items-end justify-between gap-8">
+      <div class="max-w-xl">
+        <p class="reveal mb-4 text-xs font-normal tracking-[0.35em] uppercase text-crimson">Projects</p>
+        <h2 class="reveal font-display text-4xl leading-tight font-medium text-charcoal sm:text-5xl">
+          Selected <em class="italic">Work</em>
+        </h2>
+        <span class="animate-line-grow mt-6 block h-px w-24 bg-crimson" aria-hidden="true"></span>
+      </div>
+      <p class="reveal max-w-sm leading-relaxed text-stone">
+        A glimpse into homes and workplaces we have composed across the city — each one a
+        collaboration, none of them repeatable.
+      </p>
+    </div>
+
+    <!-- Masonry via CSS columns -->
+    <div class="columns-1 gap-6 sm:columns-2 lg:columns-3 [&>*]:mb-6">
+      {
+        projects.map(({ src, alt, title, category, tall }) => (
+          <figure class="reveal group relative block break-inside-avoid overflow-hidden bg-blush">
+            <img
+              src={src}
+              alt={alt}
+              class={`w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${tall ? 'aspect-[3/4]' : 'aspect-[4/3]'}`}
+              loading="lazy"
+              decoding="async"
+              width="800"
+              height={tall ? 1067 : 600}
+            />
+            <figcaption class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent p-8 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              <span class="text-[11px] tracking-[0.25em] uppercase text-ivory/80">{category}</span>
+              <span class="mt-2 flex items-center justify-between font-display text-2xl font-medium text-ivory">
+                {title}
+                <ArrowUpRight
+                  class="h-5 w-5 -translate-x-2 translate-y-2 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
+                />
+              </span>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+
+    <p class="reveal mt-14 text-center">
+      <a
+        href="#consultation"
+        class="group inline-flex items-center gap-3 border border-charcoal/30 px-8 py-4 text-sm tracking-[0.15em] uppercase text-charcoal transition hover:border-charcoal hover:bg-charcoal hover:text-ivory"
+      >
+        Discuss Your Space
+        <ArrowUpRight class="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      </a>
+    </p>
+  </div>
+</section>

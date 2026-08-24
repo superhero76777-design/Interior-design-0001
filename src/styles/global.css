@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Design Tokens — Tailwind CSS v4 (CSS-first configuration)
+   Palette: ivory #EFE6DE (primary neutral) · crimson #9A0002 (accent/CTA)
+--------------------------------------------------------------------------- */
+@theme {
+  /* Brand palette */
+  --color-ivory: #efe6de;        /* primary background / neutral */
+  --color-linen: #f7f1eb;        /* alternate section background */
+  --color-blush: #e3d5ca;        /* hairlines, dividers, soft borders */
+  --color-crimson: #9a0002;      /* accent / call-to-action */
+  --color-crimson-dark: #7c0002; /* CTA hover */
+  --color-charcoal: #211d1b;     /* headings / primary text */
+  --color-stone: #6e645d;        /* muted body text */
+
+  /* Typography */
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Jost", system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: var(--color-crimson);
+  color: var(--color-ivory);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-crimson);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll-reveal entrance animations
+--------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-slow-zoom,
+  .animate-line-grow {
+    animation: none !important;
+  }
+}
+
+/* Slow ken-burns drift for the hero image */
+@keyframes slow-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.07);
+  }
+}
+.animate-slow-zoom {
+  animation: slow-zoom 14s ease-out forwards;
+}
+
+/* Hairline rule that grows in from the left */
+@keyframes line-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.animate-line-grow {
+  animation: line-grow 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: left;
+}
+
+/* ---------------------------------------------------------------------------
+   Header scroll state (toggled by inline script in Header.astro)
+--------------------------------------------------------------------------- */
+#site-header.is-scrolled {
+  background-color: rgba(239, 230, 222, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 1px 0 rgba(33, 29, 27, 0.08),
+    0 12px 32px rgba(33, 29, 27, 0.07);
+}
+
+/* ---------------------------------------------------------------------------
+   FAQ accordion — native <details>, zero JS
+--------------------------------------------------------------------------- */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-chevron {
+  transition: transform 0.3s ease;
+}
+
+details[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  animation: faq-open 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes faq-open {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-answer,
+  .faq-chevron {
+    animation: none;
+    transition: none;
+  }
+}
